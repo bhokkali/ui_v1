@@ -1,0 +1,73 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+.apiLoader {
+  background: #999;
+    position: fixed;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+}
+
+.apiLoaderContent {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  color: #da0909;
+  font-size: 50px;
+}
+
+.textLink {
+  color: '#fff';
+  text-decoration: 'none';
+  cursor: 'pointer';
+  text-align: 'left';
+  padding: 5px;
+  margin-top: 8px;
+}
+
+.dashBlock {
+  display: 'flex';
+  background: '#265985';
+  color: '#fff';
+  margin: 5px;
+  border-radius: "0px 10px 10px 0px";
+  text-decoration: 'none';
+}
+
+.dashBlock:hover {
+  text-decoration: 'underline';
+  background: '#05355f';
+}
+
+.dashDesign{
+  width: 10px;
+  background: "#ff6a00";
+}
+
+.dashLabelBlock {
+  display: 'flex';
+  padding: "20px 5px";
+}
