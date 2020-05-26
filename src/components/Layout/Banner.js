@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import BannerImg from '../../assets/images/banner.png'
 
 const useStyles = makeStyles(theme => ({
   
@@ -21,6 +22,8 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(6),
       paddingRight: 0,
     },
+    maxWidth: '100%',
+    flexBasis: '100%'
   }
   
 }));
@@ -31,26 +34,28 @@ export default function Banner(props){
         <React.Fragment>
             <img
                 style={{ display: 'none' }}
-                src="https://source.unsplash.com/featured/?nature"
+                src="https://source.unsplash.com/featured/?school"
+                //src={BannerImg}
                 alt="background"
               />
             <div className={classes.overlay} />
             <Grid container>
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
-                  <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    Title of a longer featured blog post
+                  <Typography component="h3" variant="h5" color="inherit" gutterBottom>
+                    தொட்டனைத் தூறு மணற்கேணி மாந்தர்க்குக்<br />
+                    கற்றனைத் தூறும் அறிவு.
                   </Typography>
-                  <Typography variant="h5" color="inherit" paragraph>
-                    Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what&apos;s most interesting in this post&apos;s contents.
-                  </Typography>
-                  <Link variant="subtitle1" href="#">
+                  <Typography variant="h6" color="inherit" paragraph>
+                    Water will flow from a well in the sand in proportion to the depth to which it is dug, and knowledge will flow from a man in proportion to his learning.
+    </Typography> 
+
+                  {/*<Link variant="subtitle1" href="#">
                     Continue reading…
-                  </Link>
-                </div>
+    </Link> */}
+                 </div> 
               </Grid>
-            </Grid>
+                </Grid> 
         </React.Fragment>
     )
 }

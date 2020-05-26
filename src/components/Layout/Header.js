@@ -57,17 +57,17 @@ const sections = [ {
     name: 'About Us',
     path: "/page/about"
 },{
-    name: 'Activities',
-    path: "/page/activities"
+    name: 'Features',
+    path: "/page/features"
 },{
-    name: 'Academics',
-    path: "/page/academics"
+    name: 'Testimonials',
+    path: "#"
 },{
-    name: 'Careers',
-    path: "/page/careers"
+    name: 'Demo',
+    path: "/page/demo"
 },{
     name: 'Events',
-    path: "/page/events"
+    path: "#"
 },{
     name: 'Contact Us',
     path: "/page/contact"
@@ -120,7 +120,7 @@ export default function Header(props) {
           )}
           
         </Toolbar>
-        {/*<Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+        <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
           {sections.map(section => (
             <Link
               color="inherit"
@@ -133,7 +133,7 @@ export default function Header(props) {
               {section.name}
             </Link>
           ))}
-          </Toolbar>*/}
+          </Toolbar>
         <Divider />
         </React.Fragment>
     )

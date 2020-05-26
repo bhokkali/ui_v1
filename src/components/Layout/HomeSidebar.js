@@ -40,13 +40,14 @@ export default function HomeSidebar(props) {
             <Grid item xs={12} md={4}>
               <Paper elevation={0} className={classes.sidebarAboutBox}>
                 <Typography variant="h6" gutterBottom>
-                  About
+                The Best Application for School
                 </Typography>
                 <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit
-                  amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+                Bhokkali is an easy software. This makes it easy to understand all kinds of school related jobs.
+                Writing jobs from school admission to mastery has been facilitated.
                 </Typography>
               </Paper>
+              {/*}
               <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
                 Archives
               </Typography>
@@ -63,6 +64,7 @@ export default function HomeSidebar(props) {
                   {network}
                 </Link>
               ))}
+              */}
             </Grid>
         </React.Fragment>
     )

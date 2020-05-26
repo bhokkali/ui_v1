@@ -6,7 +6,7 @@ import Header from '../components/Layout/Header'
 import Footer from '../components/Layout/Footer'
 import NotFound from '../components/Pages/NotFound'
 import About from '../components/Pages/About'
-import Academics from '../components/Pages/Academics'
+import Features from '../components/Pages/Features'
 
 
 const useStyles = {
@@ -36,9 +36,9 @@ const useStyles = {
           return {
             currentPage: <About />
           }
-        case 'academics':
+        case 'features':
           return {
-            currentPage: <Academics />
+            currentPage: <Features />
           }
         default:
             return {

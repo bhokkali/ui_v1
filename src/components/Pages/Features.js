@@ -16,12 +16,29 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function About(props) {
+export default function Features(props) {
   const classes = useStyles();
   const list = {
-    "About Bhokkali" : [
-    'Bhokkali is a result of the quest to find out what is happening in school as a parent.',
-    'The software will also be designed to meet the needs of children and the safety of children in the future.',
+    "Prompt Contact" : [
+    'Easier way to send message from school to teacher and parents.',
+    'Instant SMS and Email.',
+    'Mobile Application.',
+    'Online updates'
+  ],
+  "Uses for Students" : [
+      "Get Tasks from App and Web",
+      "Creative methods"
+  ],
+  "Uses for School": [
+      "Admission",
+      "Generate time table",
+      "Attendance", 
+      "Exams and Reports",
+  ],
+  "Uses fot Admin": [
+      'Time saving',
+      'Cost saving',
+      'Quick click to access'
   ]
 }
     return (
@@ -42,11 +59,32 @@ export default function About(props) {
                                 )
                             })}
                            </Typography>
+                           <Divider />
                         </React.Fragment>
                     )
                 })
                 }
+              {/*<Typography variant="h6" gutterBottom>
+                Prompt Contact
+              </Typography>
+              <Typography>
+                  <div className={classes.postText}>
+                  
+                  </div>
+                  <div className={classes.postText}>
+                  Instant SMS and Email.
+                  </div>
+                  <div className={classes.postText}>
+                  Mobile Application.
+                  </div>
+                  <div className={classes.postText}>
+                  Mobile Application.
+                  </div>
+                  <div className={classes.postText}>
+                  Mobile Application.
+                  </div>
 
+            </Typography> */}
             </Grid>
         </React.Fragment>
     )

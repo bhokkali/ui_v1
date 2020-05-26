@@ -20,7 +20,7 @@ const useStyles = (theme => ({
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/user/erondu)',
+    backgroundImage: 'url(https://source.unsplash.com/featured/?school)',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
@@ -34,6 +34,10 @@ const useStyles = (theme => ({
     ...theme.typography.body2,
     padding: theme.spacing(3, 0),
   },
+
+  mainWidth: {
+    width: 'auto'
+  }
     
 }));
 
@@ -52,11 +56,11 @@ export class HomeContainer extends React.Component {
             logoutCB={userLogout} 
             {...this.props}
           />
-          <main>
+          <main className={classes.mainWidth}>
             <Paper className={classes.mainFeaturedPost}>
               <Banner classes={classes} />
             </Paper>
-              {/*<FeaturePosts classes={classes} />*/}
+              <FeaturePosts classes={classes} />
             <Grid container spacing={5} className={classes.mainGrid}>
               <MainContent classes={classes} />
               <HomeSidebar classes={classes} />
