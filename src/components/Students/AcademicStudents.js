@@ -7,6 +7,7 @@ import LinkDisp from '../Common/LinkDisp'
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -21,7 +22,7 @@ const styles = {
   };
   
   
-  export class ListStudents extends React.Component {
+  export class AcademicStudents extends React.Component {
     
     constructor(props) {
       super(props)
@@ -81,26 +82,14 @@ const styles = {
       return (
         <div id="mainContainer">
             <Paper className={classes.paper}>
-                <FormControl className={classes.formControl}>
-                    <InputLabel shrink htmlFor="select-multiple-native">
-                    Select Grade
-                    </InputLabel>
-                    <Select
-                        native
-                        value={school_grade_id}
-                        onChange={this.handleChange('school_grade_id')}
-                        inputProps={{
-                            id: 'select-multiple-native',
-                        }}
-                    >
-                    <option>Select Grade</option>
-                    {schoolGradesList.map((opt,key) => (
-                        <option key={key} value={opt.id}>
-                        {opt.grade_name} - {opt.id}
-                        </option>
-                    ))}
-                    </Select>
-                </FormControl>
+                <SelectGrade
+                  title = "Select Grade"
+                  value = {school_grade_id}
+                  onChangeCB = {this.handleChange}
+                  onChangeParam = 'school_grade_id'
+                  schoolGradesList = {schoolGradesList}
+                  errorDisplayStatus = {false}
+                />
             </Paper>
           {school_grade_id && 
             <SimpleTable 
@@ -115,4 +104,4 @@ const styles = {
   
   
 
-export default withStyles(styles)(ListStudents)
+export default withStyles(styles)(AcademicStudents)

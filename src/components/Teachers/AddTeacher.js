@@ -581,7 +581,7 @@ export class AddTeacher extends React.Component {
                             >
                               {subjectsMaster.map((opt,key) => (
                                 <option key={key} value={opt.id}>
-                                  {opt.subject_name} - {opt.id}
+                                  {opt.subject_name}
                                 </option>
                               ))}
                             </Select>

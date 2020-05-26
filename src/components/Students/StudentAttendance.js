@@ -11,6 +11,7 @@ import AddAttendance from './AddAttendance'
 import { getAttendanceDateRanges } from '../Common/Utility/Utils'
 import * as Constants from '../Common/Utility/Constants'
 import Heading from '../Common/Heading'
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -21,6 +22,11 @@ const styles = {
       margin: '10px 0px',
       padding: '10px',
       textAlign: "center"
+    },
+    navLink: {
+      fontSize: 20,
+      cursor: 'pointer',
+      textDecoration: 'underline'
     }
   };
   
@@ -65,6 +71,13 @@ const styles = {
       const { classes, schoolGradesList, listAcademicGradeStudents, listStudentsAttendance, createUpdateStudentAttendance, history } = this.props
       const { school_grade_id, absent_date, openAttendanceStatus } = this.state
       const attendanceDateRange = getAttendanceDateRanges(Constants.attendanceDateRange)
+
+      const selectedGradeObj = _.find(schoolGradesList, (n) => { return n.id === parseInt(school_grade_id) })
+      let dispGradeName = ''
+      if(selectedGradeObj) {
+        dispGradeName = selectedGradeObj.grade_name
+        dispGradeName += selectedGradeObj.section_name ? "-"+selectedGradeObj.section_name : ''
+      }
       
       return (
         <div id="mainContainer">
@@ -77,32 +90,20 @@ const styles = {
               {(absent_date && school_grade_id) ? (
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12}>
-                    Selected Grade : {school_grade_id}, Date: {absent_date} - <span onClick={this.changeGrade}>Change</span>
+                    Selected Grade : {dispGradeName}, Date: {absent_date} - <span onClick={this.changeGrade} className={classes.navLink}>Change</span>
                   </Grid>
                 </Grid>
               ) : (
               <Grid container>
                 <Grid item xs={12} sm={12} md={6}>
-                  <FormControl className={classes.formControl}>
-                      <InputLabel shrink htmlFor="select-multiple-native">
-                      Select Grade
-                      </InputLabel>
-                      <Select
-                          native
-                          value={school_grade_id}
-                          onChange={this.handleChange('school_grade_id')}
-                          inputProps={{
-                              id: 'select-multiple-native',
-                          }}
-                      >
-                      <option>Select Grade</option>
-                      {schoolGradesList.map((opt,key) => (
-                          <option key={key} value={opt.id}>
-                          {opt.grade_name} - {opt.id}
-                          </option>
-                      ))}
-                      </Select>
-                  </FormControl>
+                  <SelectGrade
+                    title = "Select Grade"
+                    value = {school_grade_id}
+                    onChangeCB = {this.handleChange}
+                    onChangeParam = 'school_grade_id'
+                    schoolGradesList = {schoolGradesList}
+                    errorDisplayStatus = {false}
+                  />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
                   <TextField

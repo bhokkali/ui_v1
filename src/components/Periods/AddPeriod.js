@@ -108,7 +108,7 @@ export class AddPeriod extends React.Component {
                 period_type: 'Teaching',
                 time_from: '',
                 time_to: '',
-                priority: 1
+                priority: ''
             },
             periodInfoError: {
                 period_name: {
@@ -404,6 +404,7 @@ export class AddPeriod extends React.Component {
                               error={periodInfoError.priority.error}
                               onBlur={this.handleBlurChange('priority')}
                             >
+                              <option value="">Select</option>
                               {Constants.priorityList.map((opt,key) => (
                                 <option key={key} value={opt}>
                                   {opt}

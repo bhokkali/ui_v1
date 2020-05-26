@@ -61,6 +61,19 @@ const styles = {
                 }
             }
         })
+
+        if(stName === "status" && resValue) {
+            this.setState({
+                studInfo: {
+                    ...this.state.studInfo,
+                    [academic_student_id]: {
+                        ...this.state.studInfo[academic_student_id],
+                        absent_period: "Full Day",
+                        [stName]: resValue
+                    }
+                }
+            })
+        }
     }
 
     componentDidMount () {

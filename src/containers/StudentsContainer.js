@@ -184,7 +184,7 @@ class StudentsContainer extends React.Component {
       case 'edit':
         let selectedObj = '';
         if(paramResult.p.split("_")[2]) {
-          selectedObj = _.find(listSchoolStudents, (n) => { return n.id === parseInt(paramResult.p.split("_")[2]) })
+          selectedObj = _.find(listSchoolStudents.studentsList, (n) => { return n.id === parseInt(paramResult.p.split("_")[2]) })
         }
         pageContent = <AddStudent 
           authInfo={authInfo.data} 

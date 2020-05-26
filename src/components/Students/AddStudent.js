@@ -14,6 +14,7 @@ import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { isEmpty } from '../Common/Utility/Utils'
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -505,27 +506,15 @@ export class AddStudent extends React.Component {
                         
                       </Grid>
                       <Grid item  xs={12} sm={12} md={6}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel shrink htmlFor="select-multiple-native">
-                              Select Grade
-                            </InputLabel>
-                            <Select
-                              native
-                              value={studentInfo.school_grade_id}
-                              onChange={this.handleChange('school_grade_id')}
-                              inputProps={{
-                                id: 'select-multiple-native',
-                              }}
-                            >
-                              <option value="">Select Grade</option>
-                              {schoolGradesList.map((opt,key) => (
-                                <option key={key} value={opt.id}>
-                                  {opt.grade_name} - {opt.id}
-                                </option>
-                              ))}
-                            </Select>
-                          </FormControl>
-                          <FormHelperText className={classes.checkIconFail}>{studentInfoError.school_grade_id.text}</FormHelperText>
+                        <SelectGrade
+                          title = "Select Grade"
+                          value = {studentInfo.school_grade_id}
+                          onChangeCB = {this.handleChange}
+                          onChangeParam = 'school_grade_id'
+                          schoolGradesList = {schoolGradesList}
+                          errorDisplayStatus = {true}
+                          errorText = {studentInfoError.school_grade_id.text}
+                        />
                       </Grid>
                     </Grid>
 

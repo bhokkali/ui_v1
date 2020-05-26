@@ -6,17 +6,7 @@ import Grid from '@material-ui/core/Grid'
 
 const styles = theme => ({
     dashboardBox: {
-        width: 150,
-        height: 100,
-        background: '#00adff',
-        color: '#fff',
-        margin: 5,
-        padding: 5,
-        borderRadius: 5,
-        textAlign: 'center',
-    },
-    dashboardBoxDisabled: {
-        opacity: 0.5,
+        height: "90px",
     },
     textLink: {
         color: '#fff',
@@ -46,7 +36,23 @@ const styles = theme => ({
     dashLabelBlock: {
         display: 'flex',
         padding: "20px 5px"
-    }
+    },
+    disabledBlock: {
+        background: "#265985",
+        opacity: 0.6,
+        display: 'flex',
+        color: '#fff',
+        margin: 5,
+        borderRadius: "0px 10px 10px 0px",
+        textDecoration: 'none',
+    },
+    disabledTextLink: {
+        color: '#fff',
+        textDecoration: 'none',
+        textAlign: 'left',
+        padding: 5,
+        marginTop: 8
+    },
   });
 
 export class DashboardBlock extends React.Component {
@@ -62,16 +68,27 @@ export class DashboardBlock extends React.Component {
 
     render () {
         const { classes, icon, label, link, disabled } = this.props
-        const DBClass = disabled ? classes.dashboardBox + ' '+ classes.dashboardBoxDisabled : classes.dashboardBox
+        //const DBClass = disabled ? classes.dashboardBox + ' '+ classes.dashboardBoxDisabled : classes.dashboardBox
         return (
-            <div>
-                <Link to={link} className={classes.dashBlock}>
-                    <div className={classes.dashDesign}></div>
-                    <div className={classes.dashLabelBlock}>
-                        {icon}
-                        <span className={classes.textLink}>{label}</span>
+            <div className={classes.dashboardBox}>
+                {disabled ? (
+                    <div className={classes.disabledBlock}>
+                        <div className={classes.dashDesign}></div>
+                        <div className={classes.dashLabelBlock}>
+                            {icon}
+                            <span className={classes.disabledTextLink}>{label}</span>
+                        </div>
                     </div>
-                </Link>
+                ) : (
+                    <Link to={link} className={classes.dashBlock}>
+                        <div className={classes.dashDesign}></div>
+                        <div className={classes.dashLabelBlock}>
+                            {icon}
+                            <span className={classes.textLink}>{label}</span>
+                        </div>
+                    </Link>
+                )
+                }
                 {/*disabled ? (
                     <Grid container>
                         <Grid item xs={12}>

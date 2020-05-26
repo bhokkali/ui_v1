@@ -31,7 +31,11 @@ export class ProfileDashboard extends React.Component {
     }
 
     render () {
-        const { classes } = this.props
+        const { classes, authInfo } = this.props
+        let disableStatus = false
+        if(authInfo && authInfo.login_name === "demoschool") {
+            disableStatus = true
+        }
         return (
             <div className={classes.root}>
                 <DashboardBlock 
@@ -44,7 +48,7 @@ export class ProfileDashboard extends React.Component {
                     icon={<Share className={classes.iconStyle} />}
                     label='Change Password'
                     link='/km?p=profile_changePassword'
-                    disabled={false}
+                    disabled={disableStatus}
                 />
             </div>
         )

@@ -8,7 +8,7 @@ export function createUpdateStudent(payload) {
     dispatch(toggleLoader(true))
     return putService(config.students.createUpdateStudent, payload)
     .then((resp) => {
-      dispatch(getSchoolStudents(payload.student_info.school_id))
+      dispatch(getSchoolStudents(payload.student_info.school_id, 0, 10))
       dispatch(toggleSnackBarSuccessMessage(resp, "dialog"))
       dispatch(toggleLoader(false))
     })

@@ -299,9 +299,10 @@ export class AddTeacherAttendance extends React.Component {
                                 id: 'select-multiple-native',
                               }}
                             >
+                              <option value="">Select</option>
                               {listSchoolTeachers.map((opt,key) => (
                                 <option key={key} value={opt.id}>
-                                  {opt.teacher_name} - {opt.id}
+                                  {opt.teacher_name}
                                 </option>
                               ))}
                             </Select>

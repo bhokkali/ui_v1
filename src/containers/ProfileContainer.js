@@ -57,7 +57,7 @@ class ProfileContainer extends React.Component {
   static getDerivedStateFromProps(props, state) {
     const { authInfo, location, updateUserInfo, updatePassword } = props
     const paramResult = getUrlParams(location.search)
-    let pageContent = <ProifleDashboard />
+    let pageContent = <ProifleDashboard authInfo={authInfo.data} />
     let dispName = ''
     switch(paramResult.p.split("_")[1]) {
       case 'update':
@@ -69,7 +69,7 @@ class ProfileContainer extends React.Component {
         dispName = "Change Password"
         break;
       default:
-        pageContent = <ProifleDashboard />
+        pageContent = <ProifleDashboard authInfo={authInfo.data} />
         dispName = ''
         break;
     }

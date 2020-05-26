@@ -232,7 +232,9 @@ export class AddTimeTable extends React.Component {
                       >
                       <MenuItem value='None'>Select Grade</MenuItem>
                       {schoolGradesList.map((opt, key) => {
-                          return (<MenuItem value={opt} key={key}>{opt.grade_name} - {opt.section_name}</MenuItem>)
+                        let dispGradeName = opt.grade_name
+                        dispGradeName += opt.section_name ? " - "+opt.section_name : ''
+                          return (<MenuItem value={opt} key={key}>{dispGradeName}</MenuItem>)
                       })}
                       </Select>
                   </FormControl> 
