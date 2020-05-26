@@ -1,9 +1,7 @@
 .vscode
 node_modules
 build
-config
 dist/*
-config/*
 logs/*.log
 npm-debug.log*
 *.zip
