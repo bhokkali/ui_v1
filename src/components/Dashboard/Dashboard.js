@@ -4,6 +4,19 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import DashboardBlock from './DashboardBlock'
+import LocationCity from '@material-ui/icons/LocationCity'
+import ViewComfy from '@material-ui/icons/ViewComfy'
+import Announcement from '@material-ui/icons/Announcement'
+import Assignment from '@material-ui/icons/Assignment'
+import CalendarToday from '@material-ui/icons/CalendarToday'
+import SpeakerNotes from '@material-ui/icons/SpeakerNotes'
+import LocalLibrary from '@material-ui/icons/LocalLibrary'
+import WC from '@material-ui/icons/Wc'
+import PeopleAlt from '@material-ui/icons/PeopleAlt'
+import FormatListNumbered from '@material-ui/icons/FormatListNumbered'
+import HourglassEmpty from '@material-ui/icons/HourglassEmpty'
+import PlaylistAddCheck from '@material-ui/icons/PlaylistAddCheck'
+
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import GroupWork from '@material-ui/icons/GroupWork'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
@@ -123,67 +136,67 @@ export class Dashboard extends React.Component {
                     {(!authInfo.isAdmin) ? (
                         <Grid item xs={12} className={classes.root}>
                             <DashboardBlock 
-                                icon={<AccountCircle className={classes.iconFont} />}
+                                icon={<LocationCity className={classes.iconFont} />}
                                 label='School Profile'
                                 link='/km?p=profile'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<GroupWork className={classes.iconFont} />}
+                                icon={<LocalLibrary className={classes.iconFont} />}
                                 label='Teachers'
                                 link='/km?p=teachers'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<GroupWork className={classes.iconFont} />}
+                                icon={<FormatListNumbered className={classes.iconFont} />}
                                 label='Grades'
                                 link='/km?p=grades'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<ShoppingCart className={classes.iconFont} />}
+                                icon={<PeopleAlt className={classes.iconFont} />}
                                 label='Parents'
                                 link='/km?p=parents'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<Loyalty className={classes.iconFont} />}
+                                icon={<WC className={classes.iconFont} />}
                                 label='Students'
                                 link='/km?p=students'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<SupervisedUserCircle className={classes.iconFont} />}
+                                icon={<CalendarToday className={classes.iconFont} />}
                                 label='Calendar'
                                 link='/km?p=calendar'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<SupervisedUserCircle className={classes.iconFont} />}
+                                icon={<HourglassEmpty className={classes.iconFont} />}
                                 label='Periods'
                                 link='/km?p=periods'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<Redeem className={classes.iconFont} />}
+                                icon={<ViewComfy className={classes.iconFont} />}
                                 label='Time Table'
                                 link='/km?p=timeTable'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<CardTravel className={classes.iconFont} />}
+                                icon={<PlaylistAddCheck className={classes.iconFont} />}
                                 label='Teacher Attendance'
                                 link='/km?p=teacherAttendance'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<DeveloperBoard className={classes.iconFont} />}
+                                icon={<Assignment className={classes.iconFont} />}
                                 label='Exams'
                                 link='/km?p=exams'
                                 disabled={false}
                             />
                             <DashboardBlock 
-                                icon={<DirectionsRun className={classes.iconFont} />}
+                                icon={<SpeakerNotes className={classes.iconFont} />}
                                 label='Circulars'
                                 link='/km?p=circulars'
                                 disabled={false}

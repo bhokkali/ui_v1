@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { schoolTimeList, isEmpty } from '../Common/Utility/Utils'
 import Heading from '../Common/Heading'
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -346,29 +347,15 @@ export class AddExamTimeTable extends React.Component {
                           <FormHelperText className={classes.checkIconFail}>{examTimeTableInfoError.exam_id.text}</FormHelperText>
                         </Grid>
                         <Grid item  xs={12} sm={12} md={6}>
-                          <FormControl className={classes.formControl}>
-                            <InputLabel shrink htmlFor="select-multiple-native">
-                              Select Grade
-                            </InputLabel>
-                            <Select
-                              native
-                              value={examTimeTableInfo.school_grade_id}
-                              onChange={this.handleChange('school_grade_id')}
-                              inputProps={{
-                                id: 'select-multiple-native',
-                              }}
-                              error={examTimeTableInfoError.school_grade_id.error}
-                              onBlur={this.handleBlurChange('school_grade_id')}
-                            >
-                              <option value=''>Select Grade</option>
-                              {schoolGradesList.map((opt,key) => (
-                                <option key={key} value={opt.id}>
-                                  {opt.grade_name} - {opt.section_name}
-                                </option>
-                              ))}
-                            </Select>
-                          </FormControl>
-                          <FormHelperText className={classes.checkIconFail}>{examTimeTableInfoError.school_grade_id.text}</FormHelperText>
+                          <SelectGrade
+                            title = "Select Grade"
+                            value = {examTimeTableInfo.school_grade_id}
+                            onChangeCB = {this.handleChange}
+                            onChangeParam = 'school_grade_id'
+                            schoolGradesList = {schoolGradesList}
+                            errorDisplayStatus = {true}
+                            errorText = {examTimeTableInfoError.school_grade_id.text}
+                          />
                         </Grid>
                     </Grid>
 

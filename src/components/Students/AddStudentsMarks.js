@@ -9,6 +9,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import Heading from '../Common/Heading'
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -19,6 +20,11 @@ const styles = {
       margin: '10px 0px',
       padding: '10px',
       textAlign: 'center'
+    },
+    navLink: {
+      fontSize: 20,
+      cursor: 'pointer',
+      textDecoration: 'underline'
     }
   };
   
@@ -78,6 +84,19 @@ const styles = {
        } = this.props
       const { columnDef, userRowData, exam_id, school_grade_id } = this.state
       
+      const selectedGradeObj = _.find(schoolGradesList, (n) => { return n.id === parseInt(school_grade_id) })
+      let dispGradeName = ''
+      if(selectedGradeObj) {
+        dispGradeName = selectedGradeObj.grade_name
+        dispGradeName += selectedGradeObj.section_name ? "-"+selectedGradeObj.section_name : ''
+      }
+
+      const examObj = _.find(listExams, (n) => { return n.id === parseInt(exam_id) })
+      let dispExamName = ''
+      if(examObj) {
+        dispExamName = examObj.exam_name
+      }
+
       return (
         <div id="mainContainer">
             <Paper className={classes.paper}>
@@ -89,7 +108,7 @@ const styles = {
             {(exam_id && school_grade_id) ? (
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12}>
-                    Exam Id:  {exam_id}, Selected Grade : {school_grade_id} - <span onClick={this.changeGrade}>Change</span>
+                    Exam Id:  {dispExamName}, Selected Grade : {dispGradeName} - <span onClick={this.changeGrade} className={classes.navLink}>Change</span>
                   </Grid>
                 </Grid>
               ) : (
@@ -117,7 +136,15 @@ const styles = {
                   </FormControl>
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
-                  <FormControl className={classes.formControl}>
+                <SelectGrade
+                    title = "Select Grade"
+                    value = {school_grade_id}
+                    onChangeCB = {this.handleChangeExam}
+                    onChangeParam = 'school_grade_id'
+                    schoolGradesList = {schoolGradesList}
+                    errorDisplayStatus = {false}
+                  />
+                  {/*<FormControl className={classes.formControl}>
                     <InputLabel shrink htmlFor="select-multiple-native">
                       Select Grade
                     </InputLabel>
@@ -136,7 +163,7 @@ const styles = {
                         </option>
                       ))}
                     </Select>
-                  </FormControl>
+                      </FormControl> */}
 
                 </Grid>
               </Grid>

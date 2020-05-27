@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import SimpleTable from '../Common/Table/SimpelTable'
 import LinkDisp from '../Common/LinkDisp'
 import Heading from '../Common/Heading'
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -111,27 +112,14 @@ const styles = {
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={12} md={6}>
-                <FormControl className={classes.formControl}>
-                  <InputLabel shrink htmlFor="select-multiple-native">
-                    Select Grade
-                  </InputLabel>
-                  <Select
-                    native
-                    value={school_grade_id}
-                    onChange={this.handleChange('school_grade_id')}
-                    inputProps={{
-                      id: 'select-multiple-native',
-                    }}
-                  >
-                    <option value=''>Select Grade</option>
-                    {schoolGradesList.map((opt,key) => (
-                      <option key={key} value={opt.id}>
-                        {opt.grade_name} - {opt.sectionName}
-                      </option>
-                    ))}
-                  </Select>
-                </FormControl>
-
+                <SelectGrade
+                    title = "Select Grade"
+                    value = {school_grade_id}
+                    onChangeCB = {this.handleChange}
+                    onChangeParam = 'school_grade_id'
+                    schoolGradesList = {schoolGradesList}
+                    errorDisplayStatus = {false}
+                  />
               </Grid>
             </Grid>
           </Paper>

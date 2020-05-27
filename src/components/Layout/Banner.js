@@ -43,7 +43,7 @@ export default function Banner(props){
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h3" variant="h5" color="inherit" gutterBottom>
-                    தொட்டனைத் தூறு மணற்கேணி மாந்தர்க்குக்<br />
+                    தொட்டனைத் தூறும் மணற்கேணி மாந்தர்க்குக்<br />
                     கற்றனைத் தூறும் அறிவு.
                   </Typography>
                   <Typography variant="h6" color="inherit" paragraph>

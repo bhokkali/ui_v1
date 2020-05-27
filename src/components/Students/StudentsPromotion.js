@@ -10,6 +10,7 @@ import Select from '@material-ui/core/Select';
 import AddPromotion from './AddPromotion'
 import { getNextAcademicYear } from '../Common/Utility/Utils'
 import Heading from '../Common/Heading'
+import SelectGrade from '../Common/SelectGrade'
 
 const styles = {
     root: {
@@ -71,6 +72,15 @@ const styles = {
             <Grid container>
               {nextAcademicGrades.length >0 ? (
                 <Grid item xs={12} sm={12} md={12}>
+                  <SelectGrade
+                    title = "Select Grade"
+                    value = {school_grade_id}
+                    onChangeCB = {this.handleChange}
+                    onChangeParam = 'school_grade_id'
+                    schoolGradesList = {schoolGradesList}
+                    errorDisplayStatus = {false}
+                  />
+                  {/*
                   <FormControl className={classes.formControl}>
                       <InputLabel shrink htmlFor="select-multiple-native">
                       Select Grade
@@ -90,7 +100,7 @@ const styles = {
                           </option>
                       ))}
                       </Select>
-                  </FormControl>
+                      </FormControl> */}
                 </Grid>
               ) : (
                 <Grid item xs={12} sm={12} md={12}>
