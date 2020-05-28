@@ -123,7 +123,8 @@ export class Dashboard extends React.Component {
                                         <Grid item xs={12} className={classes.infoRow}>Academic Year : {authInfo.academic_year}</Grid>
                                         <Grid item xs={12} className={classes.infoRow}>Total Teachers : {authInfo.teachers_count}</Grid>
                                         <Grid item xs={12} className={classes.infoRow}>Total Grades : {authInfo.grades_count}</Grid>
-                                        <Grid item xs={12} className={classes.infoRow}>Total Parents : {authInfo.students_count}</Grid>
+                                        <Grid item xs={12} className={classes.infoRow}>Total Parents : {authInfo.parents_count}</Grid>
+                                        <Grid item xs={12} className={classes.infoRow}>Total Students : {authInfo.students_count}</Grid>
                                     </Paper>
                                 )}
                                 

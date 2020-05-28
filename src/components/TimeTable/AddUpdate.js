@@ -210,7 +210,7 @@ export class AddUpdate extends React.Component {
 
         if(stName === "subject_id") {
           console.log("reach here")
-          this.props.parentProps.getSubjectTeachersCB(event.target.value)
+          this.props.parentProps.getSubjectTeachersCB(this.props.authInfo.id, event.target.value)
         }
 
         /*if(stName === "subject_id") {
@@ -287,7 +287,7 @@ export class AddUpdate extends React.Component {
                             onChange={this.handleChange('subject_id')}
                             className={classes.selectBox}
                             >
-                            <MenuItem value='None'>Select Subject</MenuItem>
+                            <MenuItem value=''>Select Subject</MenuItem>
                             {parentProps.subjectsMaster.map((opt, key) => {
                                 return (<MenuItem value={opt.id} key={key}>{opt.subject_name}</MenuItem>)
                             })}
@@ -303,7 +303,7 @@ export class AddUpdate extends React.Component {
                               onChange={this.handleChange('teacher_id')}
                               className={classes.selectBox}
                               >
-                              <MenuItem value='None'>Select Teacher</MenuItem>
+                              <MenuItem value=''>Select Teacher</MenuItem>
                               {parentProps.subjectTeachers.map((opt, key) => {
                                   return (<MenuItem value={opt.id} key={key}>{opt.teacher_name}</MenuItem>)
                               })}

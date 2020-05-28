@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Heading from '../Common/Heading'
 
 import { ValidateEmail } from '../Common/Utility/Utils'
+import AutoSuggest from '../Common/AutoSuggest/AutoSuggest'
 
 const styles = {
     root: {
@@ -183,7 +184,7 @@ export class AddTeacher extends React.Component {
               subjects: subjectsArr,
               login_pwd: selectedTeacherInfo.login_pwd,
               joining_date: selectedTeacherInfo.joining_date,
-              status: selectedTeacherInfo.designation,
+              status: 'Active',
               school_id : props.authInfo.id
             }}
           }
@@ -360,7 +361,9 @@ export class AddTeacher extends React.Component {
         console.log(value)
 
         this.setErrorState(stName, false, '')
-        this.setState({ teacherInfo: { 
+        this.setState({ 
+          stateUpdated: true,
+          teacherInfo: { 
           ...this.state.teacherInfo,
           [stName] : value
         }})
@@ -400,15 +403,40 @@ export class AddTeacher extends React.Component {
           }
         }
 
+        selectedSubject = (newValue) => {
+          
+          console.log(newValue)
+          const value = [];
+          newValue.map((opt) => {
+            value.push(opt.id);
+          }) 
+        
+
+          this.setErrorState("subjects", false, '')
+          this.setState({ 
+            stateUpdated: true,
+            teacherInfo: { 
+            ...this.state.teacherInfo,
+            "subjects" : value
+          }})
+        }
 
     render() {
         const { classes, subjectsMaster, mode } = this.props
         const { teacherInfo, teacherInfoError } = this.state
+        
         let btnDisableState = false
         Object.keys(teacherInfoError).map((opt) => {
             if(teacherInfoError[opt].error) {
             btnDisableState = true
             }
+        })
+
+        let defaultValueArr = []
+        subjectsMaster.map((opt) => {
+          if(teacherInfo.subjects.indexOf(opt.id) !== -1) {
+            defaultValueArr.push(opt)
+          }
         })
 
         const ITEM_HEIGHT = 48;
@@ -566,7 +594,7 @@ export class AddTeacher extends React.Component {
 
                     <Grid container>
                       <Grid item xs={12} sm={12} md={6}>
-                        <FormControl className={classes.formControl}>
+                        {/*<FormControl className={classes.formControl}>
                             <InputLabel shrink htmlFor="select-multiple-native">
                               Select Subjects
                             </InputLabel>
@@ -585,7 +613,15 @@ export class AddTeacher extends React.Component {
                                 </option>
                               ))}
                             </Select>
-                          </FormControl>
+                              </FormControl> */}
+                          <AutoSuggest 
+                            options = {subjectsMaster}
+                            selected = {defaultValueArr}
+                            label="Select Subject"
+                            optionLabel = "subject_name"
+                            optionValue = "id"
+                            onChangeCB = {this.selectedSubject}
+                          />
                       </Grid>
                       <Grid item xs={12} sm={12} md={6}>
                           <TextField

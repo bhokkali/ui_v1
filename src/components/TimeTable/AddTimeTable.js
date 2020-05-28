@@ -157,6 +157,7 @@ export class AddTimeTable extends React.Component {
       if(nextProps.subjectTeachers && nextProps.subjectTeachers.length > 0) {
         this.setState({
           dialogContent: <AddUpdate 
+            authInfo = {nextProps.authInfo}
             gradeInfo = {this.state.grade_info}
             periodInfo = {this.state.periodInfo}
             parentProps = {nextProps}
@@ -189,6 +190,7 @@ export class AddTimeTable extends React.Component {
         dialogTitle: dialogTitle, 
         tableInfo: curObj,
         dialogContent: <AddUpdate 
+          authInfo = {this.props.authInfo}
           gradeInfo = {this.state.grade_info}
           periodInfo = {periodInfo}
           parentProps = {this.props}
@@ -200,7 +202,7 @@ export class AddTimeTable extends React.Component {
         />
       })
       if(!isEmpty(curObj)) {
-        this.props.getSubjectTeachersCB(curObj.subject_id)
+        this.props.getSubjectTeachersCB(this.props.authInfo.id, curObj.subject_id)
       }
     }
 

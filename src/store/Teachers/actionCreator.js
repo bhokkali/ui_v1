@@ -34,10 +34,10 @@ export function getSchoolTeachers(school_id) {
   }
 }
 
-export function getSubjectTeachers(subject_id) {
+export function getSubjectTeachers(school_id, subject_id) {
   return dispatch => {
     dispatch(toggleLoader(true))
-    return getService(config.teachers.getSubjectTeachers+"/"+subject_id)
+    return getService(config.teachers.getSubjectTeachers+"?school_id="+school_id+"&subject_id="+subject_id)
     .then((resp) => {
       dispatch({ data: resp, type: types.LIST_SUBJECT_TEACHERS })
       dispatch(toggleLoader(false))
