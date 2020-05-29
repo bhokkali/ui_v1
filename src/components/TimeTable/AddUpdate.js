@@ -144,7 +144,7 @@ export class AddUpdate extends React.Component {
         console.log('props check')
         console.log(props.tableInfo)
         console.log(state.stateTableInfo)
-        if(!isEmpty(props.tableInfo)) {
+        if(!isEmpty(props.tableInfo) && !isEmpty(state.stateTableInfo)) {
           if(props.tableInfo.period_id !== state.stateTableInfo.period_id 
             || props.tableInfo.weekday !== state.stateTableInfo.weekday) {
               if(props.tableInfo) {
