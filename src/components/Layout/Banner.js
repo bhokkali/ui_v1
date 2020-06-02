@@ -24,6 +24,17 @@ const useStyles = makeStyles(theme => ({
     },
     maxWidth: '100%',
     flexBasis: '100%'
+  },
+  kuralText: {
+    ['@media (max-width:320px)']: { // eslint-disable-line no-useless-computed-key
+      fontSize: "11.2px"
+    },
+    ['@media (min-width:321px) and (max-width:460px)']: { // eslint-disable-line no-useless-computed-key
+      fontSize: 14
+    },
+    ['@media (min-width:461px) and (max-width:660px)']: { // eslint-disable-line no-useless-computed-key
+      fontSize: 15
+    }
   }
   
 }));
@@ -43,8 +54,10 @@ export default function Banner(props){
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h3" variant="h5" color="inherit" gutterBottom>
-                    தொட்டனைத் தூறும் மணற்கேணி மாந்தர்க்குக்<br />
-                    கற்றனைத் தூறும் அறிவு.
+                    <div className={classes.kuralText}>
+                      தொட்டனைத் தூறும் மணற்கேணி மாந்தர்க்குக்<br />
+                      கற்றனைத் தூறும் அறிவு.
+                    </div>
                   </Typography>
                   <Typography variant="h6" color="inherit" paragraph>
                     Water will flow from a well in the sand in proportion to the depth to which it is dug, and knowledge will flow from a man in proportion to his learning.
