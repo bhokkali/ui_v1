@@ -29,10 +29,13 @@ const useStyles = makeStyles(theme => ({
     ['@media (max-width:320px)']: { // eslint-disable-line no-useless-computed-key
       fontSize: "11.2px"
     },
-    ['@media (min-width:321px) and (max-width:460px)']: { // eslint-disable-line no-useless-computed-key
-      fontSize: 14
+    ['@media (min-width:321px) and (max-width:420px)']: { // eslint-disable-line no-useless-computed-key
+      fontSize: 12
     },
-    ['@media (min-width:461px) and (max-width:660px)']: { // eslint-disable-line no-useless-computed-key
+    ['@media (min-width:421px) and (max-width:560px)']: { // eslint-disable-line no-useless-computed-key
+      fontSize: 13
+    },
+    ['@media (min-width:561px) and (max-width:660px)']: { // eslint-disable-line no-useless-computed-key
       fontSize: 15
     }
   }
