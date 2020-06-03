@@ -141,12 +141,12 @@ export class AddUpdate extends React.Component {
         let subject_id = ''
         let teacher_id = ''
         let id = ''
-        console.log('props check')
-        console.log(props.tableInfo)
-        console.log(state.stateTableInfo)
-        if(!isEmpty(props.tableInfo) && !isEmpty(state.stateTableInfo)) {
+        
+        if(props.tableInfo && state.stateTableInfo) {
           if(props.tableInfo.period_id !== state.stateTableInfo.period_id 
             || props.tableInfo.weekday !== state.stateTableInfo.weekday) {
+
+              console.log('inside cond <><><>')
               if(props.tableInfo) {
                 subject_id = props.tableInfo.subject_id
                 teacher_id = props.tableInfo.teacher_id
@@ -247,8 +247,7 @@ export class AddUpdate extends React.Component {
             btnDisableState = false
         }
 
-        console.log('render <<<<')
-        console.log(parentProps.subjectTeachers)
+      
         
         return (
             <div className={classes.root}>

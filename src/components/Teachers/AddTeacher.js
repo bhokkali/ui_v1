@@ -594,26 +594,6 @@ export class AddTeacher extends React.Component {
 
                     <Grid container>
                       <Grid item xs={12} sm={12} md={6}>
-                        {/*<FormControl className={classes.formControl}>
-                            <InputLabel shrink htmlFor="select-multiple-native">
-                              Select Subjects
-                            </InputLabel>
-                            <Select
-                              multiple
-                              native
-                              value={teacherInfo.subjects}
-                              onChange={this.handleChangeMultiple('subjects')}
-                              inputProps={{
-                                id: 'select-multiple-native',
-                              }}
-                            >
-                              {subjectsMaster.map((opt,key) => (
-                                <option key={key} value={opt.id}>
-                                  {opt.subject_name}
-                                </option>
-                              ))}
-                            </Select>
-                              </FormControl> */}
                           <AutoSuggest 
                             options = {subjectsMaster}
                             selected = {defaultValueArr}
@@ -621,6 +601,7 @@ export class AddTeacher extends React.Component {
                             optionLabel = "subject_name"
                             optionValue = "id"
                             onChangeCB = {this.selectedSubject}
+                            disabled={mode === 'Edit' ? true : false}
                           />
                       </Grid>
                       <Grid item xs={12} sm={12} md={6}>

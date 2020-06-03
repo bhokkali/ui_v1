@@ -36,6 +36,7 @@ export default function AutoSuggest(props) {
           />
         )}
         onChange={(event, newValue) => props.onChangeCB(newValue)}
+        disabled={props.disabled}
       />
     </div>
   );
