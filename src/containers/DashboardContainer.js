@@ -4,10 +4,10 @@ import Dashbord from '../components/Dashboard/Dashboard'
 export class DashboardContainer extends React.Component {
 
     render() {
-        const { authInfo } = this.props
+        const { authInfo, subadminInfo } = this.props
         return (
             <React.Fragment>
-                <Dashbord authInfo={authInfo.data} />
+                <Dashbord authInfo={authInfo.data} subadminInfo={subadminInfo} />
             </React.Fragment>
         )
     }

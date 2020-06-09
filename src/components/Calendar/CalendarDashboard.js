@@ -39,18 +39,21 @@ export class CalendarDashboard extends React.Component {
                     label='Add New Calendar'
                     link='/km?p=calendar_add'
                     disabled={false}
+                    permissions={['School Calendar']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='School Calendar'
                     link='/km?p=calendar_list'
                     disabled={false}
+                    permissions={['School Calendar']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='School Calendar - Grid'
                     link='/km?p=calendar_grid'
                     disabled={false}
+                    permissions={['School Calendar']}
                 />
             </div>
         )

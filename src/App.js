@@ -7,7 +7,7 @@ import StaticPageContainer from './containers/StaticPageContainer'
 import AuthContainer from './containers/AuthContainer'
 import Snackbars from './components/Common/Notifications/Snackbars'
 import { toggleSnackBar } from './store/Snackbars/actionCreator'
-import { getAuthInfo } from './store/Auth/actionCreator'
+import { getAuthInfo, getSubadminInfo } from './store/Auth/actionCreator'
 import { checkCookie } from './components/Common/Utility/Utils'
 import SchoolContainer from './containers/SchoolContainer'
 import MessageDialog from './components/Common/Dialogs/MessageDialog'
@@ -21,9 +21,15 @@ class App extends Component {
 		if(typeof document !== "undefined") {
             const chCookie = checkCookie()
             if (chCookie === true) {
-            const sendData = JSON.parse(window.localStorage.getItem('AuthInfo'))
-            this.props.getAuthInfo(sendData)
+              const sendData = JSON.parse(window.localStorage.getItem('AuthInfo'))
+              this.props.getAuthInfo(sendData)
+
+              const SubadminInfo = window.localStorage.getItem('SubadminInfo')
+              if(SubadminInfo) {
+                this.props.getSubadminInfo(JSON.parse(SubadminInfo))
+              }
             }
+            
         } else {
             console.log('document not defined yet')
         }
@@ -85,7 +91,8 @@ class App extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     toggleSnackBar,
-    getAuthInfo
+    getAuthInfo,
+    getSubadminInfo
   }, dispatch)
 
   const mapStateToProps = state => {

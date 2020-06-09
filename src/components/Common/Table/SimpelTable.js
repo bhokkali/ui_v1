@@ -72,9 +72,21 @@ export class SimpleTable extends React.Component {
                       return (
                         <TableRow key={key} className={rowStyle}>
                             <TableCell align="left">{key+1}</TableCell>
-                            {columnDef.map(cObj => (
-                                <TableCell align="left">{row[cObj]}</TableCell>
-                            ))}
+                            {columnDef.map(cObj => {
+                                if(cObj === 'Permissions') {
+                                  //const colName = cObj.split("-")[0]
+                                  return (<TableCell align="left">
+                                    {row[cObj].split(",").map((opt, key) => {
+                                      return <div>{key+1}. {opt}</div>
+                                    })}
+                                    </TableCell>
+                                  )
+                                } else {
+                                  return <TableCell align="left">{row[cObj]}</TableCell>
+                                }
+                            }
+                                
+                            )}
                         </TableRow>
                       )
                     })}

@@ -36,15 +36,17 @@ export class TeacherAttendanceDashboard extends React.Component {
             <div className={classes.root}>
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
-                    label='Add New Teacher Attendance'
+                    label='Add New Teacher Absence'
                     link='/km?p=teacherAttendance_add'
                     disabled={false}
+                    permissions={['Teacher Absence']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
-                    label='Teacher Attendance Calendar'
+                    label='Teacher Absence Calendar'
                     link='/km?p=teacherAttendance_list'
                     disabled={false}
+                    permissions={['Teacher Absence']}
                 />
             </div>
         )

@@ -5,13 +5,33 @@ import { toggleSnackBarSuccessMessage, toggleSnackBarFailureMessage } from '../S
 
 export function submitLogin(payload, academic_year_id, param) {
   let authUrl = config.auth.schoolLogin+"/"+academic_year_id
+  let loginAs = 'School'
   if(param === "admin") {
     authUrl = config.auth.adminLogin
-  } 
+    loginAs = "Admin"
+  }
+
+  if(payload.login_name.split("-").length === 2) {
+    authUrl = config.auth.subadminLogin+"/"+academic_year_id
+    loginAs = "SubAdmin"
+  } else {
+    authUrl = config.auth.schoolLogin+"/"+academic_year_id
+    loginAs = "School"
+  }
+   
   return dispatch => {
     return postService(authUrl, payload)
     .then((resp) => {
-      dispatch({ data: resp, type: types.LOGIN_SUCCESS })
+      
+      if(loginAs === "SubAdmin") {
+        resp.schoolDto.loginAs = loginAs
+        dispatch({ data: resp.schoolDto, type: types.LOGIN_SUCCESS })
+        dispatch({ data: resp, type: types.LOGIN_SUBADMIN_SUCCESS })
+      } else {
+        resp.loginAs = loginAs
+        dispatch({ data: resp, type: types.LOGIN_SUCCESS })
+      }
+      
       dispatch(toggleSnackBarSuccessMessage('successfully logged in', "snackbar"))
     })
     .catch((error) => {
@@ -39,6 +59,10 @@ export function userLogout() {
 
 export function getAuthInfo (payload) {
   return { data: payload, type: types.GET_AUTH_INFO }
+}
+
+export function getSubadminInfo (payload) {
+  return { data: payload, type: types.GET_SUBADMIN_INFO }
 }
 
 export function updateAuthInfo (payload) {

@@ -4,7 +4,8 @@ import { setCookie, deleteCookie } from '../../components/Common/Utility/Utils'
 const initialState = {
     authInfo: {},
     FpMessage: {},
-    loginSuccessStatus: false
+    loginSuccessStatus: false,
+    subadminInfo: {}
   }
   
   export default (state = initialState, action) => {
@@ -20,6 +21,13 @@ const initialState = {
           loginSuccessStatus: true
         })
 
+      case types.LOGIN_SUBADMIN_SUCCESS:
+        window.localStorage.setItem('SubadminInfo', JSON.stringify(action.data))
+        return Object.assign({}, state, {
+          subadminInfo: action.data,
+          loginSuccessStatus: true
+        })        
+
       case types.FORGOT_SUCCESS:
         return Object.assign({}, state, {
           FpMessage: action.data
@@ -31,6 +39,7 @@ const initialState = {
         deleteCookie('login_name')
         deleteCookie('school_id')
         window.localStorage.removeItem('AuthInfo')
+        window.localStorage.removeItem('SubadminInfo')
         return Object.assign({}, state, {
           authInfo: authInfoFail
         })
@@ -41,7 +50,13 @@ const initialState = {
         return Object.assign({}, state, {
           authInfo: authInfoReload
         })
-      
+
+      case types.GET_SUBADMIN_INFO:
+        window.localStorage.setItem('SubadminInfo', JSON.stringify(action.data));
+        return Object.assign({}, state, {
+          subadminInfo: action.data
+        })
+
       case types.UPDATE_AUTH_INFO:
         const authInfoUpdated = {isAuth: true, data: action.data, expTime: dt }
         window.localStorage.setItem('AuthInfo', JSON.stringify(action.data));

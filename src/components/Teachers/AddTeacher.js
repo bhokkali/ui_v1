@@ -166,7 +166,7 @@ export class AddTeacher extends React.Component {
           }
 
           if(mode === 'Edit' && selectedTeacherInfo) {
-            console.log('again called')
+            
             let subjectsArr = []
             selectedTeacherInfo.subject_info.map((opt) => {
               subjectsArr.push(opt.subject_id)

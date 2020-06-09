@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import Auth from './store/Auth/reducer'
+import Profile from './store/Profile/reducer'
 import Snackbars from './store/Snackbars/reducer'
 import Masters from './store/Masters/reducer'
 import Teachers from './store/Teachers/reducer'
@@ -18,6 +19,7 @@ import Admin from './store/Admin/reducer'
 export default createStore(
   combineReducers({
     Auth,
+    Profile,
     Snackbars,
     Masters,
     Teachers,

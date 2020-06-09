@@ -28,30 +28,35 @@ export class ExamDashboard extends React.Component {
                     label='Add Exam Details'
                     link='/km?p=exams_add'
                     disabled={false}
+                    permissions={['Manage Exams']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='Exam Calendar'
                     link='/km?p=exams_list'
                     disabled={false}
+                    permissions={['Manage Exams']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='Exam Calendar - Grid'
                     link='/km?p=exams_grid'
                     disabled={false}
+                    permissions={['Manage Exams']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='Add Exam TimeTable'
                     link='/km?p=exams_addTimeTable'
                     disabled={false}
+                    permissions={['Manage Exams']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Exam TimeTable'
                     link='/km?p=exams_listTimeTable'
                     disabled={false}
+                    permissions={['Manage Exams']}
                 />
             </div>
         )

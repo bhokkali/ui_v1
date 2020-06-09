@@ -39,12 +39,14 @@ export class TeacherDashboard extends React.Component {
                     label='Add New Teacher'
                     link='/km?p=teachers_add'
                     disabled={false}
+                    permissions={['Manage Teachers']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Teachers'
                     link='/km?p=teachers_list'
                     disabled={false}
+                    permissions={['Manage Teachers']}
                 />
             </div>
         )

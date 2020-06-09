@@ -1,6 +1,6 @@
 const config = {
-    //commonPath: 'http://localhost:8090/api/v1/', //local
-    commonPath: 'http://bhokkali.com/api/v1/', //prod
+    commonPath: 'http://localhost:8090/api/v1/', //local
+    //commonPath: 'http://bhokkali.com/api/v1/', //prod
     admin: {
         createUpdateAcademicYear: 'createUpdateAcademicYear',
         createUpdateSchool: 'createUpdateSchool',
@@ -8,16 +8,21 @@ const config = {
         createUpdateGrade: 'createUpdateGrade',
         listGrades: 'listGrades',
         createUpdateSubject: 'createUpdateSubject',
-        listSubjects: 'listSubjects'
+        listSubjects: 'listSubjects',
+        createUpdatePermission: 'createUpdatePermission',
+        listPermissions: 'listPermissions'
     },
     auth: {
         schoolLogin: 'schoolLogin',
         forgot_password: 'forgot_password_temp',
-        adminLogin: 'adminLogin'
+        adminLogin: 'adminLogin',
+        subadminLogin: 'subadminLogin'
     },
     profile: {
         update_school_info: 'createUpdateSchool',
-        school_change_password: 'schoolChangePassword'
+        school_change_password: 'schoolChangePassword',
+        createUpdateSubadmin: 'createUpdateSubadmin',
+        listSubadmins: 'listSubadmins'
     },
     masters: {
         list_grades_master: 'listGrades',

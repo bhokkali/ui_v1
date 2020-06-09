@@ -28,12 +28,14 @@ export class CircularDashboard extends React.Component {
                     label='Add New Circular'
                     link='/km?p=circulars_add'
                     disabled={false}
+                    permissions={['School Circular']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Circulars'
                     link='/km?p=circulars_list'
                     disabled={false}
+                    permissions={['School Circular']}
                 />
             </div>
         )

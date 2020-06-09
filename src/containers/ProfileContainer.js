@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types';
@@ -8,7 +9,15 @@ import Typography from '@material-ui/core/Typography';
 import UpdateProfile from '../components//Profile/UpdateProfile'
 import ChangePassword from '../components//Profile/ChangePassword'
 import ProifleDashboard from '../components//Profile/ProifleDashboard'
-import { updateUserInfo, updatePassword } from '../store/Profile/actionCreator'
+import AddSubadmin from '../components/Profile/AddSubadmin'
+import ListSubadmin from '../components/Profile/ListSubadmin.js'
+import { 
+  updateUserInfo, 
+  updatePassword,
+  createUpdateSubadmin,
+  getSubadmins
+ } from '../store/Profile/actionCreator'
+import { getPermissionsList } from '../store/Admin/actionCreator'
 import { getUrlParams } from '../components/Common/Utility/Utils'
 
 function TabContainer(props) {
@@ -54,8 +63,22 @@ class ProfileContainer extends React.Component {
     dispName: ''
   };
 
+  componentDidMount() {
+    this.props.getSubadmins(this.props.authInfo.data.id)
+    this.props.getPermissionsList()
+  }
+
   static getDerivedStateFromProps(props, state) {
-    const { authInfo, location, updateUserInfo, updatePassword } = props
+    const { 
+      authInfo, 
+      location, 
+      history,
+      updateUserInfo, 
+      updatePassword,
+      createUpdateSubadmin,
+      listSubadmins,
+      adminPermissionsList
+    } = props
     const paramResult = getUrlParams(location.search)
     let pageContent = <ProifleDashboard authInfo={authInfo.data} />
     let dispName = ''
@@ -67,6 +90,38 @@ class ProfileContainer extends React.Component {
       case 'changePassword':
         pageContent = <ChangePassword authInfo={authInfo.data} updatePasswordCB={updatePassword}/>
         dispName = "Change Password"
+        break;
+      case 'addSubadmin':
+        pageContent = <AddSubadmin 
+          authInfo={authInfo.data} 
+          mode="Add"
+          createUpdateSubadminCB={createUpdateSubadmin}
+          history={history}
+          adminPermissionsList={adminPermissionsList}
+        />
+        dispName = "Add Subadmin"
+        break;
+      case 'editSubadmin':
+        let selectedObj = '';
+        if(paramResult.p.split("_")[2]) {
+          selectedObj = _.find(listSubadmins, (n) => { return n.id === parseInt(paramResult.p.split("_")[2]) })
+        }
+        pageContent = <AddSubadmin 
+          authInfo={authInfo.data} 
+          mode="Edit"
+          createUpdateSubadminCB={createUpdateSubadmin}
+          selectedSubadminInfo={selectedObj}
+          history={history}
+          adminPermissionsList={adminPermissionsList}
+        />
+        dispName = "Edit Subadmin"
+        break;
+      case 'subadmins':
+        pageContent = <ListSubadmin 
+          authInfo={authInfo.data} 
+          listSubadmins={listSubadmins}
+        />
+        dispName = "List Subadmin"
         break;
       default:
         pageContent = <ProifleDashboard authInfo={authInfo.data} />
@@ -108,11 +163,15 @@ ProfileContainer.propTypes = {
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     updateUserInfo,
-    updatePassword
+    updatePassword,
+    createUpdateSubadmin,
+    getSubadmins,
+    getPermissionsList
   }, dispatch)
 
   const mapStateToProps = state => ({
-
+    listSubadmins: state.Profile.listSubadmins,
+    adminPermissionsList: state.Admin.adminPermissionsList
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(ProfileContainer))

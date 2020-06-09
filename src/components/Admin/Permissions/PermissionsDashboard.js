@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import DashboardBlock from '../Dashboard/DashboardBlock'
+import DashboardBlock from '../../Dashboard/DashboardBlock'
 import Share from '@material-ui/icons/Share'
 
 const styles = {
@@ -17,7 +17,7 @@ const styles = {
       },
   };
 
-export class TimeTableDashboard extends React.Component {
+export class PermissionsDashboard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -36,25 +36,23 @@ export class TimeTableDashboard extends React.Component {
             <div className={classes.root}>
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
-                    label='Grade Time Table'
-                    link='/km?p=timeTable_add'
+                    label='Add New Permission'
+                    link='/km?p=admin_permissionsAdd'
                     disabled={false}
-                    permissions={['Manage Time Table']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
-                    label='Teacher Time Table'
-                    link='/km?p=timeTable_teacher'
+                    label='List Permissions'
+                    link='/km?p=admin_permissionsList'
                     disabled={false}
-                    permissions={['Manage Time Table']}
                 />
             </div>
         )
     }
 }
 
-TimeTableDashboard.propTypes = {
+PermissionsDashboard.propTypes = {
     classes: PropTypes.object.isRequired,
   };
 
-export default withStyles(styles)(TimeTableDashboard)
+export default withStyles(styles)(PermissionsDashboard)

@@ -39,24 +39,28 @@ export class ProfileDashboard extends React.Component {
                     label='Add New Mark Grade'
                     link='/km?p=grades_addMarkGrade'
                     disabled={false}
+                    permissions={['Manage Grades']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Mark Grades'
                     link='/km?p=grades_listMarkGrades'
                     disabled={false}
+                    permissions={['Manage Grades']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='Add New Grade'
                     link='/km?p=grades_add'
                     disabled={false}
+                    permissions={['Manage Grades']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Grades'
                     link='/km?p=grades_list'
                     disabled={false}
+                    permissions={['Manage Grades']}
                 />
             </div>
         )

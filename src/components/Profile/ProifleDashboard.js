@@ -43,12 +43,28 @@ export class ProfileDashboard extends React.Component {
                     label='Update Profile'
                     link='/km?p=profile_update'
                     disabled={false}
+                    permissions={['School Profile']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='Change Password'
                     link='/km?p=profile_changePassword'
                     disabled={disableStatus}
+                    permissions={['School Profile']}
+                />
+                <DashboardBlock 
+                    icon={<Share className={classes.iconStyle} />}
+                    label='Add Subadmin'
+                    link='/km?p=profile_addSubadmin'
+                    disabled={disableStatus}
+                    permissions={['School Profile']}
+                />
+                <DashboardBlock 
+                    icon={<Share className={classes.iconStyle} />}
+                    label='List Subadmins'
+                    link='/km?p=profile_subadmins'
+                    disabled={disableStatus}
+                    permissions={['School Profile']}
                 />
             </div>
         )

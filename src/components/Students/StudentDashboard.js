@@ -34,36 +34,42 @@ export class StudentDashboard extends React.Component {
                         label='List Academic Students'
                         link='/km?p=students_academicList'
                         disabled={false}
+                        permissions={['Manage Parents / Students']}
                     />
                     <DashboardBlock 
                         icon={<Share className={classes.iconStyle} />}
                         label='Feed - Academic Students Attendacne'
                         link='/km?p=students_attendance'
                         disabled={false}
+                        permissions={['Student Attendance']}
                     />
                     <DashboardBlock 
                         icon={<Share className={classes.iconStyle} />}
                         label='View - Academic Students Attendacne in Calendar'
                         link='/km?p=students_attendanceCalendar'
                         disabled={false}
+                        permissions={['Student Attendance']}
                     />
                     <DashboardBlock 
                         icon={<Share className={classes.iconStyle} />}
                         label='List All Students'
                         link='/km?p=students_list'
                         disabled={false}
+                        permissions={['Manage Parents / Students']}
                     />
                     <DashboardBlock 
                         icon={<Share className={classes.iconStyle} />}
                         label='Add Students Marks'
                         link='/km?p=students_addMarks'
                         disabled={false}
+                        permissions={['Student Marks']}
                     />
                     <DashboardBlock 
                         icon={<Share className={classes.iconStyle} />}
                         label='Students Promotion'
                         link='/km?p=students_promotion'
                         disabled={false}
+                        permissions={['Student Promotion']}
                     />
                 </Grid>
             </Paper>

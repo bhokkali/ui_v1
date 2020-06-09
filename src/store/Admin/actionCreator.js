@@ -114,6 +114,38 @@ export function getSubjectsList() {
 }
 
 
+export function createUpdatePermission(payload) {
+  return dispatch => {
+    dispatch(toggleLoader(true))
+    return putService(config.admin.createUpdatePermission, payload)
+    .then((resp) => {
+      dispatch(getPermissionsList())
+      dispatch(toggleSnackBarSuccessMessage(resp, "dialog"))
+      dispatch(toggleLoader(false))
+    })
+    .catch((error) => {
+      dispatch(toggleSnackBarFailureMessage(error, "dialog"))
+      dispatch(toggleLoader(false))
+    })
+  }
+}
+
+export function getPermissionsList() {
+  return dispatch => {
+    dispatch(toggleLoader(true))
+    return getService(config.admin.listPermissions)
+    .then((resp) => {
+      dispatch({ data: resp, type: types.ADMIN_LIST_PERMISSIONS })
+      dispatch(toggleLoader(false))
+    })
+    .catch((error) => {
+      dispatch(toggleSnackBarFailureMessage(error, "dialog"))
+      dispatch(toggleLoader(false))
+    })
+  }
+}
+
+
 
 
 

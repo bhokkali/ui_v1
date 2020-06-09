@@ -66,7 +66,7 @@ export class SchoolContainer extends React.Component {
     }   
 
     render() {
-        const { classes, authInfo, userLogout } = this.props
+        const { classes, authInfo, userLogout, subadminInfo } = this.props
         const { currentPage } = this.state
         let pageContent = <div>Load other pages</div>
         switch (currentPage) {
@@ -135,6 +135,7 @@ const mapDispatchToProps = dispatch =>
   const mapStateToProps = state => {
     return ({
         authInfo: state.Auth.authInfo,
+        subadminInfo: state.Auth.subadminInfo
     })
 }
 

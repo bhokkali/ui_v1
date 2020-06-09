@@ -28,12 +28,14 @@ export class PeriodDashboard extends React.Component {
                     label='Add New Period'
                     link='/km?p=periods_add'
                     disabled={false}
+                    permissions={['Manage Periods']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Periods'
                     link='/km?p=periods_list'
                     disabled={false}
+                    permissions={['Manage Periods']}
                 />
             </div>
         )

@@ -3,7 +3,8 @@ import * as types from './actionType'
 const initialState = {
     adminSchoolsList: [],
     adminGradesList: [],
-    adminSubjectsList: []
+    adminSubjectsList: [],
+    adminPermissionsList: []
   }
   
   export default (state = initialState, action) => {
@@ -20,7 +21,12 @@ const initialState = {
       case types.ADMIN_LIST_SUBJECTS:
         return Object.assign({}, state, {
           adminSubjectsList: action.data
-        })        
+        })  
+      case types.ADMIN_LIST_PERMISSIONS:
+        return Object.assign({}, state, {
+          adminPermissionsList: action.data
+        })  
+              
 
       default:
         return state

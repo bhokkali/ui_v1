@@ -28,12 +28,14 @@ export class ParentDashboard extends React.Component {
                     label='Add New Parent'
                     link='/km?p=parents_add'
                     disabled={false}
+                    permissions={['Manage Parents / Students']}
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
                     label='List Parents'
                     link='/km?p=parents_list'
                     disabled={false}
+                    permissions={['Manage Parents / Students']}
                 />
             </div>
         )

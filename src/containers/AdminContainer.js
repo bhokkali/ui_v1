@@ -19,6 +19,9 @@ import SchoolsList from '../components/Admin/Schools/SchoolsList'
 import SubjectsDashboard from '../components/Admin/Subjects/SubjectsDashboard'
 import SubjectsAdd from '../components/Admin/Subjects/SubjectsAdd'
 import SubjectsList from '../components/Admin/Subjects/SubjectsList'
+import PermissionsDashboard from '../components/Admin/Permissions/PermissionsDashboard'
+import PermissionsAdd from '../components/Admin/Permissions/PermissionsAdd'
+import PermissionsList from '../components/Admin/Permissions/PermissionsList'
 import { getUrlParams } from '../components/Common/Utility/Utils'
 import { getAcademicYearsMaster } from '../store/Masters/actionCreator'
 import { 
@@ -28,7 +31,9 @@ import {
     createUpdateGrade, 
     getGradesList,
     createUpdateSubject,
-    getSubjectsList
+    getSubjectsList,
+    createUpdatePermission,
+    getPermissionsList
 } from '../store/Admin/actionCreator'
 
 function TabContainer(props) {
@@ -82,6 +87,7 @@ class AdminContainer extends React.Component {
       if(this.props.adminSchoolsList) this.props.getSchoolsList()
       if(this.props.adminGradesList) this.props.getGradesList()
       if(this.props.adminSubjectsList) this.props.getSubjectsList()
+      if(this.props.adminPermissionsList) this.props.getPermissionsList()
     }
   }
 
@@ -96,7 +102,9 @@ class AdminContainer extends React.Component {
       createUpdateGrade,
       adminGradesList,
       createUpdateSubject,
-      adminSubjectsList
+      adminSubjectsList,
+      adminPermissionsList,
+      createUpdatePermission
     } = props
 
     const paramResult = getUrlParams(location.search)
@@ -273,6 +281,52 @@ class AdminContainer extends React.Component {
         dashboardLink = "/km?p=admin_subjects"
         dispName = "Subjects List"
         break;
+      case 'permissions':
+          pageContent = <PermissionsDashboard 
+          authInfo={authInfo.data} 
+          history={history}
+          />
+          dashboardText = "Permissions"
+          dashboardLink = "/km?p=admin_permissions"
+          dispName = ""
+          break;
+      case 'permissionsAdd':
+          pageContent = <PermissionsAdd
+          authInfo={authInfo.data} 
+          history={history}
+          mode="Add"
+          createUpdatePermission={createUpdatePermission}
+          />
+          dashboardText = "Permissions"
+          dashboardLink = "/km?p=admin_permissions"
+          dispName = "Permission Add"
+          break;
+      case 'permissionsEdit':
+          let selectedPermissionObj = '';
+              if(paramResult.p.split("_")[2]) {
+                selectedPermissionObj = _.find(adminPermissionsList, (n) => { return n.id === parseInt(paramResult.p.split("_")[2]) })
+              }
+          pageContent = <PermissionsAdd
+          authInfo={authInfo.data} 
+          history={history}
+          mode="Edit"
+          createUpdatePermission={createUpdatePermission}
+          selectedPermissionInfo={selectedPermissionObj}
+          />
+          dashboardText = "Permissions"
+          dashboardLink = "/km?p=admin_permissions"
+          dispName = "Permissions Edit"
+          break;
+      case 'permissionsList':
+          pageContent = <PermissionsList
+          authInfo={authInfo.data} 
+          history={history}
+          adminPermissionsList={adminPermissionsList}
+          />
+          dashboardText = "Permissions"
+          dashboardLink = "/km?p=admin_permissions"
+          dispName = "Permissions List"
+          break;
       
       default:
         pageContent = <CalendarDashboard />
@@ -322,14 +376,17 @@ const mapDispatchToProps = dispatch =>
     createUpdateGrade,
     getGradesList,
     createUpdateSubject,
-    getSubjectsList
+    getSubjectsList,
+    createUpdatePermission,
+    getPermissionsList
   }, dispatch)
 
   const mapStateToProps = state => ({
     academicYearMaster: state.Masters.academicYearMaster,
     adminSchoolsList: state.Admin.adminSchoolsList,
     adminGradesList: state.Admin.adminGradesList,
-    adminSubjectsList: state.Admin.adminSubjectsList
+    adminSubjectsList: state.Admin.adminSubjectsList,
+    adminPermissionsList: state.Admin.adminPermissionsList
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AdminContainer))
