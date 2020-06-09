@@ -1,6 +1,6 @@
 const config = {
-    commonPath: 'http://localhost:8090/api/v1/', //local
-    //commonPath: 'http://bhokkali.com/api/v1/', //prod
+    //commonPath: 'http://localhost:8090/api/v1/', //local
+    commonPath: 'http://bhokkali.com/api/v1/', //prod
     admin: {
         createUpdateAcademicYear: 'createUpdateAcademicYear',
         createUpdateSchool: 'createUpdateSchool',
