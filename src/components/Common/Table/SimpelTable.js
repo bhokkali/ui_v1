@@ -43,7 +43,7 @@ export class SimpleTable extends React.Component {
         if(!rows || rows.length <= 0 ) {
           return (
             <Paper className={classes.root}>
-              Date not available
+              Data not available
             </Paper>
           )
         }
