@@ -61,6 +61,28 @@ export function getParentInfo(parent_id) {
   }
 }
 
+export function getSearchParents(school_id, parent_name, status, page, limit) {
+  return dispatch => {
+    dispatch({ data: [], type: types.LIST_SEARCH_PARENTS })
+    dispatch({ data: false, type: types.LIST_SEARCH_UPDATED_STATUS })
+    dispatch(toggleLoader(true))
+    return getService(config.parents.searchParents+"?school_id="+school_id+"&parent_name="+parent_name+"&status="+status+"&page="+page+"&per_page="+limit)
+    .then((resp) => {
+      dispatch({ data: resp, type: types.LIST_SEARCH_PARENTS })
+      dispatch({ data: true, type: types.LIST_SEARCH_UPDATED_STATUS })
+      dispatch(toggleLoader(false))
+    })
+    .catch((error) => {
+      dispatch({ data: [], type: types.LIST_SEARCH_PARENTS })
+      dispatch({ data: false, type: types.LIST_SEARCH_UPDATED_STATUS })
+      dispatch(toggleSnackBarFailureMessage(error, "dialog"))
+      dispatch(toggleLoader(false))
+    })
+  }
+}
 
-
-
+export function removeSearchUpdatedStatus() {
+  return dispatch => {
+    dispatch({ data: false, type: types.LIST_SEARCH_UPDATED_STATUS })
+  }
+}

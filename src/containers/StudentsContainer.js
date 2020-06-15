@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import StudentDashboard from '../components/Students/StudentDashboard'
 import AddStudent from '../components/Students/AddStudent'
 import ListStudents from '../components/Students/ListStudents'
+import SearchStudents from '../components/Students/SearchStudents'
 import AcademicStudents from '../components/Students/AcademicStudents'
 import AddStudentsMarks from '../components/Students/AddStudentsMarks'
 import StudentAttendance from '../components/Students/StudentAttendance'
@@ -138,6 +139,13 @@ class StudentsContainer extends React.Component {
         />
 
         dispName = "Add Student"
+        break;
+      case 'search':
+        pageContent = <SearchStudents 
+          authInfo={authInfo.data} 
+          history={history}
+        />
+        dispName = "Search Students"
         break;
       case 'list':
         pageContent = <ListStudents 

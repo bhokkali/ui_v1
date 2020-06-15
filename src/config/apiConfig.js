@@ -47,7 +47,8 @@ const config = {
         createUpdateParent: 'createUpdateParents',
         getSchoolParents: 'getAllParents',
         checkAvailabilityParents: 'checkAvailabilityParents',
-        getParentInfo: 'getParentInfo'
+        getParentInfo: 'getParentInfo',
+        searchParents: 'searchParents'
     },
     students: {
         createUpdateStudent: 'createUpdateStudents',
@@ -61,7 +62,8 @@ const config = {
         createUpdateStudentAttendance: 'createUpdateStudentAttendance',
         listAllExamReports: 'listAllExamReports',
         updateAcademicPromotion: 'updateAcademicPromotion',
-        listStudentAttendanceCalendar: 'listStudentAttendanceCalendar'
+        listStudentAttendanceCalendar: 'listStudentAttendanceCalendar',
+        searchStudent: 'searchStudent'
     },
     schoolCalendar: {
         createUpdateCalendar: 'createUpdateCalendar',

@@ -7,7 +7,9 @@ const initialState = {
       email: false,
       aadhar_no: false
     },
-    parentDetails: {}
+    parentDetails: {},
+    listSearchParents: {},
+    listSearchUpdatedStatus: false
   }
   
   export default (state = initialState, action) => {
@@ -26,7 +28,16 @@ const initialState = {
       case types.PARENT_DETAILS:
         return Object.assign({}, state, {
           parentDetails: action.data
-        })   
+        })
+      case types.LIST_SEARCH_PARENTS:
+        return Object.assign({}, state, {
+          listSearchParents: action.data
+        })
+      case types.LIST_SEARCH_UPDATED_STATUS:
+        return Object.assign({}, state, {
+          listSearchUpdatedStatus: action.data
+        })  
+        
         
       default:
         return state

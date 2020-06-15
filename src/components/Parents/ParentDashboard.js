@@ -32,6 +32,13 @@ export class ParentDashboard extends React.Component {
                 />
                 <DashboardBlock 
                     icon={<Share className={classes.iconStyle} />}
+                    label='Search Parents'
+                    link='/km?p=parents_search'
+                    disabled={false}
+                    permissions={['Manage Parents / Students']}
+                />
+                <DashboardBlock 
+                    icon={<Share className={classes.iconStyle} />}
                     label='List Parents'
                     link='/km?p=parents_list'
                     disabled={false}

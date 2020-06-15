@@ -241,6 +241,33 @@ export function getStudentAttendanceCalendar(school_grade_id) {
   }
 }
 
+export function getSearchStudents(school_id, student_name, status, page, limit) {
+  return dispatch => {
+    dispatch({ data: [], type: types.LIST_SEARCH_STUDENTS })
+    dispatch({ data: false, type: types.LIST_SEARCH_UPDATED_STATUS })
+    dispatch(toggleLoader(true))
+    return getService(config.students.searchStudent+"?school_id="+school_id+"&student_name="+student_name+"&status="+status+"&page="+page+"&per_page="+limit)
+    .then((resp) => {
+      dispatch({ data: resp, type: types.LIST_SEARCH_STUDENTS })
+      dispatch({ data: true, type: types.LIST_SEARCH_UPDATED_STATUS })
+      dispatch(toggleLoader(false))
+    })
+    .catch((error) => {
+      dispatch({ data: [], type: types.LIST_SEARCH_STUDENTS })
+      dispatch({ data: false, type: types.LIST_SEARCH_UPDATED_STATUS })
+      dispatch(toggleSnackBarFailureMessage(error, "dialog"))
+      dispatch(toggleLoader(false))
+    })
+  }
+}
+
+export function removeSearchUpdatedStatus() {
+  return dispatch => {
+    dispatch({ data: false, type: types.LIST_SEARCH_UPDATED_STATUS })
+  }
+}
+
+
 
 
 

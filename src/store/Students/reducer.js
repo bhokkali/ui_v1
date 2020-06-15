@@ -8,7 +8,9 @@ const initialState = {
     listStudentsAttendance: [],
     listAllExamReports: [],
     listStudentAttendanceCalendar: [],
-    marksUpatedStatus: false
+    marksUpatedStatus: false,
+    listSearchStudents: [],
+    listSearchUpdatedStatus: false
   }
   
   export default (state = initialState, action) => {
@@ -45,7 +47,15 @@ const initialState = {
       case types.MARKS_UPDATED_STATUS:
         return Object.assign({}, state, {
           marksUpatedStatus: action.data
-        })      
+        })  
+      case types.LIST_SEARCH_STUDENTS:
+        return Object.assign({}, state, {
+          listSearchStudents: action.data
+        })  
+      case types.LIST_SEARCH_UPDATED_STATUS:
+        return Object.assign({}, state, {
+          listSearchUpdatedStatus: action.data
+        })   
         
       default:
         return state

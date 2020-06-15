@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import ParentDashboard from '../components/Parents/ParentDashboard'
 import AddParent from '../components/Parents/AddParent'
 import ListParents from '../components/Parents/ListParents'
+import SearchParents from '../components/Parents/SearchParents'
 import { getUrlParams, isEmpty } from '../components/Common/Utility/Utils'
 import { createUpdateParent, getSchoolParents, checkAvailability } from '../store/Parents/actionCreator'
 
@@ -88,6 +89,13 @@ class ParentsContainer extends React.Component {
         />
 
         dispName = "Add Parent"
+        break;
+      case 'search':
+        pageContent = <SearchParents 
+          authInfo={authInfo.data} 
+          history={history}
+        />
+        dispName = "Search Parents"
         break;
       case 'list':
         pageContent = <ListParents 
