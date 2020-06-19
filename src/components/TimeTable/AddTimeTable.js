@@ -7,13 +7,13 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 import * as Constants from '../Common/Utility/Constants'
 import { isEmpty } from '../Common/Utility/Utils'
 import MenuItem from '@material-ui/core/MenuItem';
 import FormDialog from '../Common/Dialogs/FormDialog'
 import AddUpdate from './AddUpdate'
 import Heading from '../Common/Heading'
+import GeneratePDF from '../Common/GeneratePDF'
 
 const styles = {
     root: {
@@ -210,12 +210,69 @@ export class AddTimeTable extends React.Component {
       this.setState({dialogOpenStatus: false, dialogTitle: '', dialogContent: ''})
     }
 
+    generateRowData = () => {
+      const { listSchoolPeriods, listGradeTimeTable } = this.props
+      var result = [];
+     
+      
+      Constants.weekDays.map((weekday) => {
+          let rowData = [weekday]
+          listSchoolPeriods.map((opt) => {
+
+              let curObj = _.find(listGradeTimeTable, (n) => {
+                  return (n.period_id === opt.id && n.weekday === weekday)
+              })
+             
+              const disData = curObj ? curObj.subject_name : ''
+              rowData.push(disData)
+          })
+          result.push(rowData)
+      })
+      return result;
+  };
+
+  generateColumnHeader = () => {
+      const { listSchoolPeriods } = this.props
+      var result = ['Day'];
+      
+      listSchoolPeriods.map((opt) => {
+          const dispName = opt.period_name
+          result.push(dispName)
+      })
+      
+      return result;
+    }
+
+    periodsTimings = () => {
+      const { listSchoolPeriods } = this.props
+      var result = [];
+      
+      listSchoolPeriods.map((opt) => {
+          const rowData = [opt.period_name]
+          const dispName = opt.time_from+" to "+opt.time_to
+          rowData.push(dispName)
+          result.push(rowData)
+      })
+      return result;
+    }
+
 
     render() {
-        const { classes, listSchoolPeriods, schoolGradesList, listGradeTimeTable } = this.props
+        const { classes, listSchoolPeriods, schoolGradesList, listGradeTimeTable, authInfo } = this.props
         const { grade_info, school_grade_id, dialogOpenStatus, dialogTitle, dialogContent } = this.state
-
         
+        let pdfTableData = []
+        if(listSchoolPeriods.length > 0 && listGradeTimeTable.length > 0) {
+          pdfTableData = [{
+              columDef: [this.generateColumnHeader()],
+              rowDef: this.generateRowData()
+            },
+            {
+              columDef: [],
+              rowDef: this.periodsTimings()
+            }
+          ]
+        }
         return (
             <React.Fragment>
               <Paper className={classes.paper}>
@@ -241,7 +298,7 @@ export class AddTimeTable extends React.Component {
                       </Select>
                   </FormControl> 
               ) : (
-                <React.Fragment>
+                <div id="TimeTable" ref="timeTable">
                   <Grid item xs={12} className={classes.selectedGrade}>
                     Selected Grade : {grade_info.grade_name} - <span onClick={this.clearGradeInfo} className={classes.navLink}>Change</span>
                   </Grid>
@@ -294,9 +351,16 @@ export class AddTimeTable extends React.Component {
                         </Grid>
                       )
                     })}
+                    <GeneratePDF 
+                      authInfo={authInfo}
+                      gradeName={grade_info.grade_name}
+                      content="Time Table"
+                      tableData={pdfTableData}
+                    />
                   </Grid>
-                </React.Fragment>
+                </div>
               )}
+              
               </Paper>
               <FormDialog 
               dialogOpenStatus={dialogOpenStatus}

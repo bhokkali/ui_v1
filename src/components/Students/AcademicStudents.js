@@ -8,6 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import SelectGrade from '../Common/SelectGrade'
+import GeneratePDF from '../Common/GeneratePDF'
 
 const styles = {
     root: {
@@ -29,7 +30,8 @@ const styles = {
       this.state = {
         columnDef: [],
         userRowData: [],
-        school_grade_id: ''
+        school_grade_id: '',
+        pdfTableData: []
       }
     }
     
@@ -38,6 +40,9 @@ const styles = {
       const rejectArr = ['id', 'school_id', 'academic_year_id', 'school_grade_id', 'student_id']
       let columnDef = []
       let userRowData = []
+      let pdfTableData = []
+      let pdfColumnDef = []
+      let pdfRowDef = []
       if (listAcademicGradeStudents && listAcademicGradeStudents.length > 0) {
         // Construct column data
         columnDef = Object.keys(listAcademicGradeStudents[0])
@@ -47,21 +52,28 @@ const styles = {
         /*if(columnDef.indexOf('Action') === -1) {
             columnDef.push('Action')
         } */
+        pdfColumnDef.push(['S.No','Student Name'])
         //Construct Row Data
-        listAcademicGradeStudents.map((obj) => {
+        listAcademicGradeStudents.map((obj, key) => {
           /*obj.Action = <LinkDisp 
             kmLink="/km?p=students_edit" 
             kmLinkId={obj.id}
             kmLinkName="Edit" 
         />*/
+        pdfRowDef.push([ key+1, obj.student_name ])
           userRowData.push(obj)
         })
 
+        pdfTableData.push({
+          columDef: pdfColumnDef,
+          rowDef: pdfRowDef
+        })
         
       }  
       return {
         columnDef,
-        userRowData
+        userRowData,
+        pdfTableData
       }
     }
 
@@ -76,9 +88,13 @@ const styles = {
     }
   
     render() {
-      const { classes, schoolGradesList } = this.props
-      const { columnDef, userRowData, school_grade_id } = this.state
-      
+      const { classes, schoolGradesList, authInfo } = this.props
+      const { columnDef, userRowData, school_grade_id, pdfTableData } = this.state
+      let gradeName = ''
+      if(schoolGradesList.length > 0) {
+        const gradeObj = _.find(schoolGradesList, (n) => {return n.id == school_grade_id})
+        gradeName = gradeObj ? gradeObj.grade_name : ''
+      }
       return (
         <div id="mainContainer">
             <Paper className={classes.paper}>
@@ -90,6 +106,14 @@ const styles = {
                   schoolGradesList = {schoolGradesList}
                   errorDisplayStatus = {false}
                 />
+                {school_grade_id &&
+                  <GeneratePDF 
+                    authInfo={authInfo}
+                    gradeName={gradeName}
+                    content="Academic Students"
+                    tableData={pdfTableData}
+                  />
+                }
             </Paper>
           {school_grade_id && 
             <SimpleTable 
