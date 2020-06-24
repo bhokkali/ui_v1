@@ -133,6 +133,22 @@ class AdminContainer extends React.Component {
         dashboardLink = "/km?p=admin_academicYears"
         dispName = "Academic years Add"
         break;
+      case 'academicYearsEdit':
+        let selectedAcademicyearObj = '';
+          if(paramResult.p.split("_")[2]) {
+            selectedAcademicyearObj = _.find(academicYearMaster, (n) => { return n.id === parseInt(paramResult.p.split("_")[2]) })
+          }
+        pageContent = <AcademicYearsAdd
+        authInfo={authInfo.data} 
+        history={history}
+        mode="Edit"
+        createUpdateAcademicYear={createUpdateAcademicYear}
+        selectedAcademicYearInfo = {selectedAcademicyearObj}
+        />
+        dashboardText = "Academic years"
+        dashboardLink = "/km?p=admin_academicYears"
+        dispName = "Academic years Edit"
+        break;
     case 'academicYearsList':
         pageContent = <AcademicYearsList
         authInfo={authInfo.data} 

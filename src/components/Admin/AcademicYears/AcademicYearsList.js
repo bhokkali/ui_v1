@@ -31,17 +31,17 @@ export class AcademicYearsList extends React.Component {
         if (academicYearMaster.length > 0) {
           // Construct column data
           let columnDef = Object.keys(academicYearMaster[0])
-          /*if(columnDef.indexOf('Action') === -1) {
+          if(columnDef.indexOf('Action') === -1) {
               columnDef.push('Action')
-          } */
+          }
           //Construct Row Data
           let userRowData = []
           academicYearMaster.map((obj) => {
-            /*obj.Action = <LinkDisp 
+            obj.Action = <LinkDisp 
               kmLink="/km?p=admin_academicYearsEdit" 
               kmLinkId={obj.id}
               kmLinkName="Edit" 
-          /> */
+          /> 
             userRowData.push(obj)
           })
   

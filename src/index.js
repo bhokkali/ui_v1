@@ -5,6 +5,7 @@ import App from './App';
 import store from './store.js'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+import * as serviceWorker from './serviceWorker'
 
 const rootEl = document.getElementById('root')
 
@@ -25,3 +26,5 @@ if (module.hot) {
       </Provider>, rootEl)
   })
 }
+
+serviceWorker.register()

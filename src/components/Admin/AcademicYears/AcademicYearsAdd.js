@@ -30,6 +30,7 @@ export class AcademicYearsAdd extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+           stateUpdated: false,
             academicYearInfo: {
                 academic_year: ''
             },
@@ -53,6 +54,22 @@ export class AcademicYearsAdd extends React.Component {
           }
          })
       }
+
+      static getDerivedStateFromProps(props, state) {
+        if(!state.stateUpdated) {
+          const { mode, selectedAcademicYearInfo } = props
+    
+          if(mode === 'Edit' && selectedAcademicYearInfo) {
+            return { academicYearInfo: { 
+              ...state.academicYearInfo,
+              academic_year: selectedAcademicYearInfo.academic_year
+            }}
+          }
+        }
+        
+        return null
+      }
+
     
       handleBlurChange = (stName) => event => {
         const enteredValue = event.target.value
@@ -97,7 +114,7 @@ export class AcademicYearsAdd extends React.Component {
             }
 
             if(this.props.mode === 'Edit') {
-              sendData.id = this.props.selectedacademicYearInfo.id
+              sendData.id = this.props.selectedAcademicYearInfo.id
             }
 
             this.props.createUpdateAcademicYear(sendData)
