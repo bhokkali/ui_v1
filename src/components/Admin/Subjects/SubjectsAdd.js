@@ -119,7 +119,7 @@ export class SubjectsAdd extends React.Component {
 
             const sendData = {
               subject_name: subjectInfo.subject_name,
-              subject_code: parseInt(subjectInfo.subject_code)
+              subject_code: subjectInfo.subject_code
             }
 
             if(this.props.mode === 'Edit') {

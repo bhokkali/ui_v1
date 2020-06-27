@@ -35,7 +35,7 @@ export default function Features(props) {
       "Attendance", 
       "Exams and Reports",
   ],
-  "Uses fot Admin": [
+  "Uses for Admin": [
       'Time saving',
       'Cost saving',
       'Quick click to access'
