@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 export default function Features(props) {
   const classes = useStyles();
   const list = {
-    "Prompt Contact Prompt Contact" : [
+    "Prompt Contact" : [
     'Easier way to send message from school to teacher and parents.',
     'Instant SMS and Email.',
     'Mobile Application.',
