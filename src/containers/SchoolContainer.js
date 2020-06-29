@@ -40,7 +40,6 @@ export class SchoolContainer extends React.Component {
         const localAuthData = JSON.parse(window.localStorage.getItem('AuthInfo'))
         if (!localAuthData || Object.keys(localAuthData).length < 1) {
             this.props.removeAuthInfo()
-            //this.props.history.push('/')
             window.location.href = "/"
         }
     }
@@ -51,7 +50,6 @@ export class SchoolContainer extends React.Component {
         const localAuthData = JSON.parse(window.localStorage.getItem('AuthInfo'))
         if (!localAuthData || Object.keys(localAuthData).length < 1) {
             props.removeAuthInfo()
-            //props.history.push('/')
             window.location.href = "/"
         }
         

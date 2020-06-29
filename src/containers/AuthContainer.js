@@ -21,7 +21,9 @@ export class AuthContainer extends React.Component {
 
     static getDerivedStateFromProps(props, state) {
         const { authInfo,history } = props
-		if(authInfo.isAuth) {
+        const localAuthData = JSON.parse(window.localStorage.getItem('AuthInfo'))
+        if (localAuthData && localAuthData !== null && Object.keys(localAuthData).length > 1) {
+		//if(authInfo.isAuth) {
 			history.push('/km?p=dashboard')
         }
     }
