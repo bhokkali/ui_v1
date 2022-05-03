@@ -7,7 +7,8 @@ import Footer from '../components/Layout/Footer'
 import NotFound from '../components/Pages/NotFound'
 import About from '../components/Pages/About'
 import Features from '../components/Pages/Features'
-
+import Privacy from '../components/Pages/Privacy'
+import Contact from '../components/Pages/Contact'
 
 const useStyles = {
   mainContainer: {
@@ -36,9 +37,17 @@ const useStyles = {
           return {
             currentPage: <About />
           }
+        case 'privacy':
+          return {
+            currentPage: <Privacy />
+          }
         case 'features':
           return {
             currentPage: <Features />
+          }
+        case 'contact':
+          return {
+            currentPage: <Contact />
           }
         default:
             return {

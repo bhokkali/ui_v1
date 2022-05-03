@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
     toolbarSecondary: {
       justifyContent: 'space-between',
       overflowX: 'auto',
+      background: '#ef693708'
     },
     toolbarLink: {
       padding: theme.spacing(1),
@@ -59,7 +60,7 @@ const sections = [ {
 },{
     name: 'Features',
     path: "/page/features"
-},{
+},/*{
     name: 'Testimonials',
     path: "#"
 },{
@@ -68,7 +69,7 @@ const sections = [ {
 },{
     name: 'Events',
     path: "#"
-},{
+},*/{
     name: 'Contact Us',
     path: "/page/contact"
 },{
