@@ -71,6 +71,9 @@ const sections = [ {
 },{
     name: 'Contact Us',
     path: "/page/contact"
+},{
+  name: 'Privacy',
+  path: "/page/privacy"
 }];
 
 export default function Header(props) {
